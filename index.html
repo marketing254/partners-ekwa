@@ -541,7 +541,7 @@
     //   partners.ekwa.com/msm/lila/<partner>  ->  REFCODE = "lila/<partner>"
     // Root or any non-partner path books as "direct". (Sam to be added later.)
     (function () {
-      var LILA_URL = 'https://lila-standalone-partner-t.youcanbook.me/';
+      var LILA_URL = 'https://lila-standalone-partner.youcanbook.me/';
       var parts = location.pathname.split('/').filter(Boolean); // ['msm','lila','john']
       var owner = '', partner = '';
       if (parts[0] === 'msm') { owner = (parts[1] || '').toLowerCase(); partner = parts[2] || ''; }
