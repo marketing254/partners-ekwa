@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon</title>
+  <meta name="description" content="Something exciting is on the way. Stay tuned!" />
+  <style>
+    :root {
+      --bg-1: #0f0c29;
+      --bg-2: #302b63;
+      --bg-3: #24243e;
+      --accent: #7f5af0;
+      --accent-2: #2cb67d;
+      --text: #fffffe;
+      --muted: #94a1b2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-1));
+      background-size: 400% 400%;
+      animation: gradientShift 18s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      max-width: 640px;
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid rgba(127, 90, 240, 0.5);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(127, 90, 240, 0.08);
+      margin-bottom: 1.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(90deg, #fffffe, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.lead {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown div {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      min-width: 84px;
+      backdrop-filter: blur(8px);
+    }
+
+    .countdown span {
+      display: block;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 700;
+    }
+
+    .countdown small {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    form.subscribe {
+      display: flex;
+      gap: 0.6rem;
+      max-width: 420px;
+      margin: 0 auto 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    form.subscribe input {
+      flex: 1 1 220px;
+      padding: 0.85rem 1.1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    form.subscribe input:focus { border-color: var(--accent); }
+
+    form.subscribe button {
+      padding: 0.85rem 1.6rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    form.subscribe button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(127, 90, 240, 0.35);
+    }
+
+    .msg { min-height: 1.2rem; color: var(--accent-2); font-size: 0.9rem; }
+
+    .booking { margin: 1.5rem auto 0.5rem; }
+
+    /* YCBM text-link renders an <a> inside .booking — style it like a button */
+    .booking a {
+      display: inline-block;
+      padding: 0.85rem 1.8rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .booking a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(127, 90, 240, 0.35);
+    }
+
+    .ref-tag {
+      display: none;
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .socials {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .socials a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .socials a:hover { color: var(--text); }
+
+    /* floating blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+      z-index: 1;
+    }
+    .blob.one { width: 320px; height: 320px; background: var(--accent); top: -80px; left: -80px; animation: float 12s ease-in-out infinite; }
+    .blob.two { width: 280px; height: 280px; background: var(--accent-2); bottom: -90px; right: -70px; animation: float 15s ease-in-out infinite reverse; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, -40px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+
+  <main class="container">
+    <span class="badge">Launching Soon</span>
+    <h1>Something Great<br />Is Coming</h1>
+    <p class="lead">We're putting the finishing touches on something we think you'll love. Be the first to know when we go live.</p>
+
+    <div class="countdown" id="countdown">
+      <div><span id="days">00</span><small>Days</small></div>
+      <div><span id="hours">00</span><small>Hours</small></div>
+      <div><span id="minutes">00</span><small>Minutes</small></div>
+      <div><span id="seconds">00</span><small>Seconds</small></div>
+    </div>
+
+    <form class="subscribe" id="subscribeForm">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button type="submit">Notify Me</button>
+    </form>
+    <div class="msg" id="msg"></div>
+
+    <!-- YouCanBookMe scheduler (text-link embed). data-copyparameters carries
+         ?REFCODE=CODE from this page's URL straight into the booking form. -->
+    <div class="booking">
+      <script src="https://embed.ycb.me"
+              async="true"
+              data-domain="lila-standalone-partner-t"
+              data-type="text-link"
+              data-displaymode="auto"
+              data-copyparameters="true"></script>
+    </div>
+    <div class="ref-tag" id="refTag"></div>
+
+    <div class="socials">
+      <a href="#" aria-label="Twitter">Twitter</a>
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="LinkedIn">LinkedIn</a>
+    </div>
+  </main>
+
+  <script>
+    // Countdown to 30 days from first visit
+    const target = new Date();
+    target.setDate(target.getDate() + 30);
+
+    const pad = (n) => String(n).padStart(2, '0');
+
+    function tick() {
+      const now = new Date();
+      let diff = Math.max(0, target - now);
+
+      const days = Math.floor(diff / 86400000); diff -= days * 86400000;
+      const hours = Math.floor(diff / 3600000); diff -= hours * 3600000;
+      const minutes = Math.floor(diff / 60000); diff -= minutes * 60000;
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById('days').textContent = pad(days);
+      document.getElementById('hours').textContent = pad(hours);
+      document.getElementById('minutes').textContent = pad(minutes);
+      document.getElementById('seconds').textContent = pad(seconds);
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // Testing aid: show which referral code this visit carries.
+    // data-copyparameters handles the actual hand-off to YCBM; this just confirms it.
+    (function () {
+      const ref = new URLSearchParams(location.search).get('REFCODE');
+      const tag = document.getElementById('refTag');
+      if (ref) {
+        tag.textContent = 'Referral code detected: ' + ref;
+        tag.style.display = 'block';
+      }
+    })();
+
+    // Subscribe handler (front-end only — wire to your backend later)
+    document.getElementById('subscribeForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg');
+      if (email) {
+        msg.textContent = "Thanks! We'll let you know when we launch. 🎉";
+        this.reset();
+      }
+    });
+  </script>
+</body>
+</html>
