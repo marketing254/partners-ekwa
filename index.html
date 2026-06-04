@@ -7,7 +7,7 @@
   <meta name="description" content="Book your Marketing Strategy Meeting with Ekwa Marketing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #07111f;
@@ -31,7 +31,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(102,240,255,0.14), transparent 28%),
@@ -72,20 +72,21 @@
     }
     .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 0; }
     .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
-    .brand img { width: 178px; height: auto; }
+    .brand img { width: 152px; height: auto; }
     .brand small { color: var(--muted); display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
     .brand b { display: block; font-size: 14px; color: var(--text); }
     .navlinks { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-    .navlinks a { text-decoration: none; color: var(--muted); font-weight: 700; font-size: 14px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 14px; transition: color .15s; }
+    .navlinks a:not(.btn):hover { color: var(--text); }
     .navlinks a.btn { color: #fff; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 15px 22px; border-radius: 999px; text-decoration: none; font-weight: 800;
+      padding: 12px 20px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 14px;
       color: #03111d; background: linear-gradient(135deg, var(--cyan), var(--blue));
-      box-shadow: 0 12px 28px rgba(96, 183, 255, .26); border: 0;
+      box-shadow: 0 10px 24px rgba(96, 183, 255, .22); border: 0;
     }
     .btn.alt { background: rgba(255,255,255,.05); color: var(--text); border: 1px solid var(--line); box-shadow: none; }
-    .hero { padding: 72px 0 34px; overflow: hidden; }
+    .hero { padding: 44px 0 28px; overflow: hidden; }
     .hero-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: stretch; }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 10px; padding: 9px 15px; border-radius: 999px;
@@ -93,14 +94,14 @@
       color: #c9fbff; font-size: 13px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
     }
     .eyebrow span { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 16px var(--cyan); }
-    h1 { font-size: clamp(42px, 6vw, 74px); line-height: .98; margin: 18px 0 16px; letter-spacing: -.045em; }
-    .hero p.lead { font-size: 20px; color: #d6e5fa; margin: 0 0 24px; max-width: 740px; }
+    h1 { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.08; margin: 14px 0 14px; letter-spacing: -.02em; }
+    .hero p.lead { font-size: 16px; color: #d6e5fa; margin: 0 0 20px; max-width: 700px; }
     .accent { color: var(--cyan); }
     .hero-note { color: var(--muted); font-size: 15px; margin: 14px 0 30px; max-width: 690px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
     .hero-badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
     .badge { padding: 18px; border-radius: 20px; border: 1px solid var(--line); background: rgba(255,255,255,.03); }
-    .badge b { display: block; font-size: 18px; margin-bottom: 4px; }
+    .badge b { display: block; font-size: 15px; margin-bottom: 4px; }
     .badge span { color: var(--muted); font-size: 14px; }
 
     .booking-panel { padding: 20px; display: flex; flex-direction: column; gap: 16px; height: 100%; }
@@ -121,20 +122,21 @@
     .quote { font-size: 16px; color: #dbe8fb; margin: 0 0 18px; }
     .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0 14px; }
     .metric { padding: 16px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
-    .metric strong { display: block; font-size: 20px; color: var(--cyan); }
+    .metric strong { display: block; font-size: 17px; color: var(--cyan); }
     .metric span { color: var(--muted); font-size: 13px; }
     .mini-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
     .mini-list li { display: flex; gap: 10px; color: #d3e4fb; font-size: 14px; }
     .mini-list li:before { content: "✦"; color: var(--cyan); }
-    section { padding: 34px 0; }
-    .section-top { max-width: 820px; margin-bottom: 24px; }
-    .kicker { color: #90efff; text-transform: uppercase; font-size: 13px; letter-spacing: .12em; font-weight: 800; margin-bottom: 10px; }
-    h2 { font-size: clamp(32px, 4vw, 50px); line-height: 1.04; letter-spacing: -.04em; margin: 0 0 12px; }
-    .sub { margin: 0; font-size: 18px; color: var(--muted); }
+    section { padding: 28px 0; }
+    .section-top { max-width: 760px; margin-bottom: 22px; }
+    .kicker { color: #90efff; text-transform: uppercase; font-size: 12px; letter-spacing: .12em; font-weight: 800; margin-bottom: 9px; }
+    h2 { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 10px; }
+    h3 { font-size: 17px; line-height: 1.3; margin: 0 0 8px; }
+    .sub { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.6; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .card { padding: 24px; }
-    .card h3 { margin: 0 0 10px; font-size: 22px; }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
     .card p { margin: 0; color: var(--muted); }
     .icon { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; font-size: 24px; margin-bottom: 16px; background: linear-gradient(135deg, rgba(102,240,255,.16), rgba(96,183,255,.12)); border: 1px solid rgba(102,240,255,.18); }
     .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -168,21 +170,21 @@
     .stack { display: grid; gap: 18px; }
     .mini-browser .shot img { aspect-ratio: 16/9; }
     .recommend { padding: 28px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
-    .recommend h3 { margin: 0 0 6px; font-size: 28px; }
+    .recommend h3 { margin: 0 0 6px; font-size: 19px; }
     .recommend p { margin: 0; color: var(--muted); max-width: 740px; }
     .pill-line { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
     .pill { padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(102,240,255,.18); background: rgba(102,240,255,.08); color: #d0fcff; font-weight: 700; font-size: 13px; }
-    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .review-card { padding: 24px; }
-    .stars { color: var(--gold); font-size: 20px; letter-spacing: 2px; margin-bottom: 14px; }
-    .review-card h3 { margin: 0 0 10px; font-size: 20px; }
-    .review-card p { margin: 0; color: var(--muted); }
-    .review-card small { display: block; margin-top: 14px; color: #9ddcff; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .review-card { padding: 22px; display: flex; flex-direction: column; }
+    .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
+    .review-card p { margin: 0 0 16px; color: var(--muted); font-size: 14px; line-height: 1.6; flex: 1; }
+    .review-card h3 { margin: 0; font-size: 14px; font-weight: 700; }
+    .review-card small { display: block; margin-top: 3px; color: #5f74a0; font-weight: 600; text-transform: none; letter-spacing: .01em; font-size: 12px; }
     .widget-note { margin-top: 18px; padding: 18px 20px; border-radius: 18px; border: 1px dashed rgba(255,255,255,.16); color: #d6e5fa; background: rgba(255,255,255,.03); }
     .widget-note b { color: var(--cyan); }
-    .cta { padding: 44px; text-align: center; }
+    .cta { padding: 30px; text-align: center; }
     .cta .kicker { color: #d4fff5; }
-    .cta p { color: #d3e4fb; max-width: 720px; margin: 0 auto 24px; font-size: 18px; }
+    .cta p { color: #d3e4fb; max-width: 680px; margin: 0 auto 22px; font-size: 15px; }
     footer { padding: 24px 0 40px; }
     .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--muted); font-size: 14px; border-top: 1px solid rgba(121,182,255,.12); padding-top: 24px; }
     .foot img { width: 150px; }
@@ -220,24 +222,9 @@
       background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(234,243,253,.92));
       border-color: rgba(69,128,208,.22);
     }
-    .mary-tag:before {
-      content: "🐾";
-      margin-right: 2px;
-    }
     .hero-badges .badge {
       background: rgba(255,255,255,.78);
       border-color: rgba(69,128,208,.18);
-    }
-    .hero-badges .badge b:before {
-      content: "🐾 ";
-      font-size: 16px;
-    }
-    .calendar-placeholder h3:before {
-      content: "🐶 ";
-    }
-    .card h3:before {
-      content: "• ";
-      color: #4580d0;
     }
 
   
@@ -348,8 +335,8 @@
       <div class="brand">
         <img src="data:image/png;base64,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" alt="Ekwa Marketing logo">
         <div>
-          <small>Veterinary Partner Page</small>
-          <b>For clients referred by Mary LeMay</b>
+          <small>Marketing Strategy Meeting</small>
+          <b>Recommended by Mary LeMay</b>
         </div>
       </div>
       <nav class="navlinks" aria-label="Page navigation">
@@ -486,31 +473,49 @@
     <section id="reviews">
       <div class="wrap">
         <div class="section-top">
-          <div class="kicker">Google Reviews</div>
-          <h2>Make Google reviews work harder for your clinic</h2>
-          <p class="sub">Reviews do more than add stars. They help future pet parents feel safe, show the clinic’s personality, and give trust signals on key service pages.</p>
+          <div class="kicker">Client Reviews</div>
+          <h2>What practices say about Ekwa</h2>
+          <p class="sub">Real results and kind words from the practices Ekwa Marketing works with every day.</p>
         </div>
         <div class="review-grid">
           <article class="glass review-card">
             <div class="stars">★★★★★</div>
-            <h3>Get more quality reviews</h3>
-            <p>Use a clean review request flow, QR code materials, and simple follow up ideas that make it easier for happy clients to leave feedback.</p>
-            <small>Review growth</small>
+            <p>"I am extremely happy and pleased with Lila from Ekwa and the marketing services they provide. Lila helped make my website better than I ever imagined. She's incorporated everything that was important to me and she listened to me."</p>
+            <h3>Ekwa Client</h3>
+            <small>Working with Lila Stone</small>
           </article>
           <article class="glass review-card">
             <div class="stars">★★★★★</div>
-            <h3>Respond with care</h3>
-            <p>Positive reviews can receive warm replies. Negative reviews can be handled case by case, with privacy and brand reputation kept in mind.</p>
-            <small>Response support</small>
+            <p>"I love my relationship with my coach, Lila, as well."</p>
+            <h3>Ekwa Client</h3>
+            <small>Working with Lila Stone</small>
           </article>
           <article class="glass review-card">
             <div class="stars">★★★★★</div>
-            <h3>Show reviews where they matter</h3>
-            <p>Strong feedback can be placed on the right pages, like pet dental care, puppy and kitten care, allergies, wellness, or senior pet care.</p>
-            <small>Social proof</small>
+            <p>"In my first month with Ekwa, I had 34 keywords in the top 3 places of the major search engines. Now, in less than 2 years, my website ranks for 358 keywords in the top 3 places. Results are proven."</p>
+            <h3>Dentist</h3>
+            <small>Flower Mound, TX</small>
+          </article>
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Choosing Ekwa Marketing was a game changer for our practice! 9 out of 10 new patients say they found us through Google. We are receiving 25–30 new patients per month from the Internet!"</p>
+            <h3>Dentist</h3>
+            <small>Longview, TX</small>
+          </article>
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Thank you Ekwa. We had our best year ever, topping $2,000,000 in collections and almost 600 new patients."</p>
+            <h3>Dentist</h3>
+            <small>Greenville, SC</small>
+          </article>
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Ekwa did a great job with my new website. I give the experience a 9.5 out of 10!"</p>
+            <h3>Surgeon &amp; Fertility Specialist</h3>
+            <small>Frisco, TX</small>
           </article>
         </div>
-        <div class="widget-note"><b>Design placeholder:</b> This section is ready for a live Google review widget, selected review snapshots, or approved review quotes when you want to add them.</div>
+        <p class="sub" style="margin-top:22px; font-size:14px;">Reviews sourced from <a href="https://www.ekwa.com/reviews/" style="color:#1f4e95; font-weight:700;">ekwa.com/reviews</a>.</p>
       </div>
     </section>
 
@@ -518,14 +523,9 @@
       <div class="wrap">
         <div class="glass cta">
           <div class="kicker">Next Step</div>
-          <h2>Book your Marketing Strategy Meeting</h2>
+          <h2>Marketing Strategy Meeting Recommended By Mary LeMay</h2>
           <p>Pick a time that works for you and we will meet you at your Marketing Strategy Meeting.</p>
           <a href="#schedule" class="btn">Book a Meeting</a>
-          <div class="pill-line" style="justify-content:center; margin-top:22px;">
-            <span class="pill">Strategy meeting</span>
-            <span class="pill">Special Mary referral page</span>
-            <span class="pill">$300 off first two monthly invoices</span>
-          </div>
         </div>
       </div>
     </section>
