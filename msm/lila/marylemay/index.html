@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Meeting | Ekwa Partners</title>
+  <meta name="description" content="Book your Marketing Strategy Meeting with Ekwa Marketing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg2: #0b1a31;
+      --card: rgba(10, 24, 44, 0.78);
+      --card-2: rgba(14, 31, 56, 0.88);
+      --line: rgba(121, 182, 255, 0.18);
+      --text: #f5f9ff;
+      --muted: #a8bad5;
+      --blue: #60b7ff;
+      --cyan: #66f0ff;
+      --teal: #49e0c0;
+      --green: #9effc1;
+      --gold: #ffd369;
+      --pink: #c882ff;
+      --glow: 0 24px 70px rgba(39, 131, 255, 0.18);
+      --radius: 24px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(102,240,255,0.14), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(200,130,255,0.12), transparent 26%),
+        radial-gradient(circle at 70% 70%, rgba(73,224,192,0.08), transparent 24%),
+        linear-gradient(180deg, #07111f 0%, #081323 30%, #0a1730 60%, #07111f 100%);
+      line-height: 1.55;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .15;
+      pointer-events: none;
+      mask-image: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.35));
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; position: relative; z-index: 1; }
+    .glass {
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--glow);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(6, 15, 30, 0.6);
+      border-bottom: 1px solid rgba(121, 182, 255, 0.12);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 0; }
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand img { width: 152px; height: auto; }
+    .brand small { color: var(--muted); display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .brand b { display: block; font-size: 14px; color: var(--text); }
+    .navlinks { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 14px; transition: color .15s; }
+    .navlinks a:not(.btn):hover { color: var(--text); }
+    .navlinks a.btn { color: #fff; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 12px 20px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 14px;
+      color: #03111d; background: linear-gradient(135deg, var(--cyan), var(--blue));
+      box-shadow: 0 10px 24px rgba(96, 183, 255, .22); border: 0;
+    }
+    .btn.alt { background: rgba(255,255,255,.05); color: var(--text); border: 1px solid var(--line); box-shadow: none; }
+    .hero { padding: 44px 0 28px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: stretch; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; padding: 9px 15px; border-radius: 999px;
+      border: 1px solid rgba(102,240,255,0.24); background: rgba(102,240,255,0.08);
+      color: #c9fbff; font-size: 13px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+    }
+    .eyebrow span { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 16px var(--cyan); }
+    h1 { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.08; margin: 14px 0 14px; letter-spacing: -.02em; }
+    .hero p.lead { font-size: 16px; color: #d6e5fa; margin: 0 0 20px; max-width: 700px; }
+    .accent { color: var(--cyan); }
+    .hero-note { color: var(--muted); font-size: 15px; margin: 14px 0 30px; max-width: 690px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+    .badge { padding: 18px; border-radius: 20px; border: 1px solid var(--line); background: rgba(255,255,255,.03); }
+    .badge b { display: block; font-size: 15px; margin-bottom: 4px; }
+    .badge span { color: var(--muted); font-size: 14px; }
+
+    .booking-panel { padding: 20px; display: flex; flex-direction: column; gap: 16px; height: 100%; }
+    .calendar-card { position: relative; overflow: hidden; border-radius: 22px; border: 1px solid rgba(102,240,255,.18); background: rgba(255,255,255,.04); flex: 1 1 auto; min-height: 460px; }
+    .calendar-card iframe { width: 100%; height: 100%; min-height: 460px; border: 0; display: block; background: rgba(255,255,255,.03); }
+    .calendar-placeholder { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; background: linear-gradient(135deg, rgba(7,17,31,.90), rgba(11,26,49,.90)); }
+    .calendar-placeholder h3 { margin: 0 0 8px; font-size: 24px; }
+    .calendar-placeholder p { margin: 0 0 18px; color: var(--muted); }
+    .calendar-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; max-width: 340px; margin: 14px auto 0; }
+    .calendar-mini span { padding: 10px 8px; border-radius: 14px; border: 1px solid rgba(102,240,255,.16); background: rgba(102,240,255,.07); color: #d0fcff; font-size: 13px; font-weight: 800; }
+    .trusted-frame { padding: 20px; border-radius: 22px; border: 1px solid rgba(158,255,193,.18); background: rgba(158,255,193,.07); }
+    .trusted-frame .mary-tag { margin-bottom: 12px; }
+    .feature-card { padding: 24px; position: relative; overflow: hidden; }
+    .feature-card:before { content: ""; position: absolute; inset: -80px auto auto -80px; width: 180px; height: 180px; border-radius: 50%; background: rgba(102,240,255,.16); filter: blur(10px); }
+    .feature-card:after { content: ""; position: absolute; right: -40px; bottom: -40px; width: 140px; height: 140px; border-radius: 50%; background: rgba(200,130,255,.16); filter: blur(8px); }
+    .feature-card > * { position: relative; z-index: 1; }
+    .mary-tag { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 999px; background: rgba(158,255,193,.09); color: #dffff0; border: 1px solid rgba(158,255,193,.18); font-weight: 800; margin-bottom: 14px; }
+    .quote { font-size: 16px; color: #dbe8fb; margin: 0 0 18px; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0 14px; }
+    .metric { padding: 16px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+    .metric strong { display: block; font-size: 17px; color: var(--cyan); }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .mini-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+    .mini-list li { display: flex; gap: 10px; color: #d3e4fb; font-size: 14px; }
+    .mini-list li:before { content: "✦"; color: var(--cyan); }
+    section { padding: 28px 0; }
+    .section-top { max-width: 760px; margin-bottom: 22px; }
+    .kicker { color: #90efff; text-transform: uppercase; font-size: 12px; letter-spacing: .12em; font-weight: 800; margin-bottom: 9px; }
+    h2 { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 10px; }
+    h3 { font-size: 17px; line-height: 1.3; margin: 0 0 8px; }
+    .sub { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.6; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card { padding: 24px; }
+    .card h3 { margin: 0 0 8px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); }
+    .icon { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; font-size: 24px; margin-bottom: 16px; background: linear-gradient(135deg, rgba(102,240,255,.16), rgba(96,183,255,.12)); border: 1px solid rgba(102,240,255,.18); }
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .step { padding: 22px; position: relative; }
+    .step .num { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #04121f; display: grid; place-items: center; font-weight: 900; margin-bottom: 14px; }
+    .step p { color: var(--muted); margin: 0; }
+    .partner-strip { padding: 24px 28px; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin: 20px 0 8px; }
+    .partner-strip .offer-pill { padding: 12px 14px; border-radius: 16px; background: rgba(158,255,193,.09); border: 1px solid rgba(158,255,193,.18); color: #dffff0; font-weight: 800; }
+    .partner-strip p { margin: 0; color: var(--muted); max-width: 720px; }
+    .showcase-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 18px; align-items: start; }
+    .browser { padding: 14px; overflow: hidden; }
+    .browser-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 12px; }
+    .dots { display: flex; gap: 7px; }
+    .dots span { width: 11px; height: 11px; border-radius: 50%; display: block; }
+    .dots span:nth-child(1) { background: #ff6d7d; }
+    .dots span:nth-child(2) { background: #ffd56f; }
+    .dots span:nth-child(3) { background: #49e0c0; }
+    .url {
+      flex: 1; min-width: 0; padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,.05); color: var(--muted);
+      border: 1px solid rgba(255,255,255,.08); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .shot { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); }
+    .shot img { width: 100%; height: 100%; object-fit: cover; }
+    .shot.hero img { aspect-ratio: 16/10; }
+    .shot.small img { aspect-ratio: 16/10; }
+    .overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px; background: linear-gradient(180deg, rgba(3,9,19,0), rgba(3,9,19,.92)); }
+    .overlay b { display: block; font-size: 22px; margin-bottom: 6px; }
+    .overlay span { color: #d3e4fb; font-size: 14px; }
+    .shot-caption { padding: 16px 6px 4px; color: var(--muted); font-size: 14px; }
+    .shot-caption b { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+    .stack { display: grid; gap: 18px; }
+    .mini-browser .shot img { aspect-ratio: 16/9; }
+    .recommend { padding: 28px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
+    .recommend h3 { margin: 0 0 6px; font-size: 19px; }
+    .recommend p { margin: 0; color: var(--muted); max-width: 740px; }
+    .pill-line { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .pill { padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(102,240,255,.18); background: rgba(102,240,255,.08); color: #d0fcff; font-weight: 700; font-size: 13px; }
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .review-card { padding: 22px; display: flex; flex-direction: column; }
+    .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
+    .review-card p { margin: 0 0 16px; color: var(--muted); font-size: 14px; line-height: 1.6; flex: 1; }
+    .review-card h3 { margin: 0; font-size: 14px; font-weight: 700; }
+    .review-card small { display: block; margin-top: 3px; color: #5f74a0; font-weight: 600; text-transform: none; letter-spacing: .01em; font-size: 12px; }
+    .widget-note { margin-top: 18px; padding: 18px 20px; border-radius: 18px; border: 1px dashed rgba(255,255,255,.16); color: #d6e5fa; background: rgba(255,255,255,.03); }
+    .widget-note b { color: var(--cyan); }
+    .cta { padding: 30px; text-align: center; }
+    .cta .kicker { color: #d4fff5; }
+    .cta p { color: #d3e4fb; max-width: 680px; margin: 0 auto 22px; font-size: 15px; }
+    footer { padding: 24px 0 40px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--muted); font-size: 14px; border-top: 1px solid rgba(121,182,255,.12); padding-top: 24px; }
+    .foot img { width: 150px; }
+    .foot a { color: #bde8ff; }
+    @media (max-width: 980px) {
+      .hero-grid, .showcase-grid, .recommend { grid-template-columns: 1fr; }
+      .grid-3, .review-grid, .timeline, .hero-badges { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .nav { align-items: flex-start; }
+      .navlinks { display: none; }
+      .hero { padding-top: 48px; }
+      .metrics { grid-template-columns: 1fr; }
+      .partner-strip, .foot { flex-direction: column; align-items: flex-start; }
+      .cta { padding: 28px; }
+    }
+  
+    /* Vet friendly polish */
+    .mary-name {
+      margin: 0 0 12px;
+      color: #20365d;
+      font-weight: 900;
+      font-size: 16px;
+    }
+    .quote {
+      color: #20365d;
+      background: rgba(255,255,255,.58);
+      border-left: 4px solid #4580d0;
+      padding: 12px 14px;
+      border-radius: 14px;
+    }
+    .trusted-frame {
+      background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(234,243,253,.92));
+      border-color: rgba(69,128,208,.22);
+    }
+    .hero-badges .badge {
+      background: rgba(255,255,255,.78);
+      border-color: rgba(69,128,208,.18);
+    }
+
+  
+    /* White background and dark text override */
+    :root {
+      --bg: #ffffff;
+      --bg2: #f7fbff;
+      --card: rgba(255, 255, 255, 0.96);
+      --card-2: rgba(255, 255, 255, 0.98);
+      --line: rgba(31, 78, 149, 0.16);
+      --text: #1b315a;
+      --muted: #33455f;
+      --blue: #356ab6;
+      --cyan: #1f4e95;
+      --teal: #6ea6df;
+      --green: #eef6ff;
+      --gold: #f2b94b;
+      --pink: #8fb3e8;
+      --glow: 0 18px 45px rgba(31, 78, 149, 0.10);
+    }
+    body {
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(53,106,182,0.08), transparent 24%),
+        radial-gradient(circle at 88% 12%, rgba(142,180,232,0.10), transparent 22%),
+        linear-gradient(180deg, #ffffff 0%, #fbfdff 38%, #f7fbff 100%);
+    }
+    body:before {
+      background-image:
+        linear-gradient(rgba(31,78,149,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,78,149,0.035) 1px, transparent 1px);
+      opacity: .5;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: rgba(31, 78, 149, 0.14);
+      box-shadow: var(--glow);
+    }
+    header {
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(31, 78, 149, 0.12);
+    }
+    h1, h2, h3, .brand b, .badge b, .review-card h3, .shot-caption b, .recommend h3 {
+      color: #1b315a;
+    }
+    .navlinks a, .hero-note, .sub, .card p, .review-card p, .partner-strip p, .shot-caption, .calendar-placeholder p, .metric span, .badge span {
+      color: #33455f;
+    }
+    .partner-strip p { color: #26354f; font-weight: 500; }
+    .partner-strip .kicker { color: #163a78; }
+    .hero p.lead, .quote, .mini-list li, .widget-note, .cta p {
+      color: #314967;
+    }
+    .accent, .kicker, .metric strong, .mini-list li:before, .widget-note b, .review-card small {
+      color: #1f4e95;
+    }
+    .mary-attribution, .trusted-frame p[style] {
+      color: #1b315a !important;
+      font-weight: 900 !important;
+    }
+    .btn {
+      color: #ffffff;
+      background: linear-gradient(135deg, #1f4e95, #356ab6);
+      box-shadow: 0 12px 28px rgba(31, 78, 149, 0.20);
+    }
+    .btn.alt {
+      background: #ffffff;
+      color: #1f4e95;
+      border: 1px solid rgba(31, 78, 149, 0.18);
+    }
+    .eyebrow, .mary-tag, .partner-strip .offer-pill, .trusted-frame, .pill, .calendar-mini span {
+      color: #1f4e95;
+      background: #eef6ff;
+      border-color: rgba(31, 78, 149, 0.16);
+    }
+    .calendar-placeholder {
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(246,250,255,.98));
+      color: #1b315a;
+    }
+    .badge, .metric, .url, .widget-note, .calendar-card {
+      background: #ffffff;
+      border-color: rgba(31, 78, 149, 0.14);
+    }
+    .icon {
+      background: #eef6ff;
+      border-color: rgba(31,78,149,.14);
+    }
+    .step .num {
+      background: linear-gradient(135deg, #1f4e95, #356ab6);
+      color: #ffffff;
+    }
+    .feature-card:before { background: rgba(53,106,182,.10); }
+    .feature-card:after { background: rgba(110,166,223,.12); }
+    .overlay {
+      background: linear-gradient(180deg, rgba(255,255,255,0), rgba(27,49,90,.84));
+    }
+    .overlay b, .overlay span { color: #ffffff; }
+    .foot {
+      border-top: 1px solid rgba(31,78,149,.12);
+      color: #51657f;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="data:image/png;base64,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" alt="Ekwa Marketing logo">
+        <div>
+          <small>Marketing Strategy Meeting</small>
+          <b>Recommended by Mary LeMay</b>
+        </div>
+      </div>
+      <nav class="navlinks" aria-label="Page navigation">
+        <a href="#msm">MSM</a>
+        <a href="#services">What We Do</a>
+        <a href="#reviews">Google Reviews</a>
+        <a href="#schedule" class="btn">Book a Meeting</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span></span>Specially recommended by Mary LeMay of LeMay Veterinary Consulting</div>
+          <h1>Help more pet parents find and trust <span class="accent">your veterinary clinic</span>.</h1>
+          <p class="lead">Ekwa Marketing helps veterinary clinics grow with custom websites, strong local SEO, AEO support, call tracking, Google review support, and simple monthly reporting.</p>
+          <p class="hero-note">This page is made for clinics Mary refers to Ekwa. It shows how a better website, stronger local search, review support, and call insight can help more pet parents choose your practice.</p>
+          <div class="hero-actions">
+            <a href="#schedule" class="btn">Book Your Marketing Strategy Meeting</a>
+          </div>
+          <div class="hero-badges">
+            <div class="badge glass"><b>Pet parent friendly websites</b><span>Built to feel warm, clear, and easy to use.</span></div>
+            <div class="badge glass"><b>Local search visibility</b><span>Help nearby pet owners find your care.</span></div>
+            <div class="badge glass"><b>New client call insight</b><span>See what happens when a pet parent calls.</span></div>
+          </div>
+        </div>
+        <aside class="glass booking-panel" aria-label="Book a meeting and referral details">
+          <div class="calendar-card" id="schedule">
+            <iframe id="ycbm" src="about:blank" title="Book a meeting" loading="lazy"></iframe>
+          </div>
+
+          <div class="trusted-frame">
+            <div class="mary-tag">Trusted referral partner page</div>
+            <p class="quote">“I have been looking for a marketing company that I can recommend to folks.”</p>
+            <p class="mary-name">Mary LeMay. LeMay Veterinary Consulting</p>
+            <div class="metrics">
+              <div class="metric"><strong>$300 Off</strong><span>First and second monthly invoices for Mary’s referrals</span></div>
+              <div class="metric"><strong>Custom</strong><span>Website, SEO, content, and tracking in one plan</span></div>
+              <div class="metric"><strong>Clear</strong><span>Simple reports that show where growth is coming from</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="glass partner-strip">
+          <div>
+            <div class="kicker">Partner Referral Benefit</div>
+            <p>This is a special Ekwa page for Mary LeMay’s clients. If you come through Mary’s referral, your clinic receives <b style="color:#0a7a45;">$300 off your first and second monthly invoices</b>. That gives you a strong start while you build momentum.</p>
+          </div>
+          <div class="offer-pill">Created for Mary’s clients</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="msm">
+      <div class="wrap">
+        <div class="section-top">
+          <div class="kicker">MSM. Marketing Strategy Meeting</div>
+          <h2>How the MSM works</h2>
+          <p class="sub">The first meeting is simple. We look at your clinic’s current online presence, hear your goals, and show where growth can come from next.</p>
+        </div>
+        <div class="timeline">
+          <div class="glass step">
+            <div class="num">1</div>
+            <h3>Book a time</h3>
+            <p>Choose a time that works for you using the scheduler above. It only takes a minute.</p>
+          </div>
+          <div class="glass step">
+            <div class="num">2</div>
+            <h3>Share your goals</h3>
+            <p>Tell us what you want more of. New clients. Dental visits. Wellness exams. Urgent care calls. Better website leads.</p>
+          </div>
+          <div class="glass step">
+            <div class="num">3</div>
+            <h3>Review your current setup</h3>
+            <p>We review your website, rankings, local listings, reviews, and the path from search to phone call or booking.</p>
+          </div>
+          <div class="glass step">
+            <div class="num">4</div>
+            <h3>Get a clear game plan</h3>
+            <p>You leave with a better picture of what Ekwa can do and what steps can help your clinic grow next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-top">
+          <div class="kicker">What Ekwa Does</div>
+          <h2>Friendly marketing support for veterinary clinics</h2>
+          <p class="sub">Ekwa helps veterinary teams connect caring websites, stronger local search, front desk insight, and better review use into one simple growth system.</p>
+        </div>
+        <div class="grid-3">
+          <article class="glass card">
+            <div class="icon">✦</div>
+            <h3>Custom veterinary websites</h3>
+            <p>Every website is built for the clinic. Ekwa includes the website as part of the monthly service. The goal is a site that helps pet parents trust the clinic and take the next step.</p>
+          </article>
+          <article class="glass card">
+            <div class="icon">⌕</div>
+            <h3>SEO and AEO support</h3>
+            <p>Ekwa helps clinics show up in Google and stay visible as AI tools shape search. That includes strong service pages, local signals, and clear content.</p>
+          </article>
+          <article class="glass card">
+            <div class="icon">☎</div>
+            <h3>Call tracking and reporting</h3>
+            <p>Know how new client calls are handled. Reports can show booked calls, missed chances, voicemail, and patterns that help the clinic improve phone conversion.</p>
+          </article>
+          <article class="glass card">
+            <div class="icon">★</div>
+            <h3>Google review support</h3>
+            <p>Ekwa helps clinics ask for more reviews, handle responses with care, and place strong reviews on the right pages to build trust with future pet parents.</p>
+          </article>
+          <article class="glass card">
+            <div class="icon">▣</div>
+            <h3>Content and local listings</h3>
+            <p>From service page copy to name, address, and phone consistency, Ekwa handles the details that help veterinary clinics stay strong across the web.</p>
+          </article>
+          <article class="glass card">
+            <div class="icon">↗</div>
+            <h3>Simple monthly reports</h3>
+            <p>Instead of sending a hard to read analytics dashboard, Ekwa gives clinics simple reporting that shows what matters and where momentum is building.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="wrap">
+        <div class="section-top">
+          <div class="kicker">Client Reviews</div>
+          <h2>What practices say about Ekwa</h2>
+          <p class="sub">Real results and kind words from the practices Ekwa Marketing works with every day.</p>
+        </div>
+        <div class="review-grid">
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"I am extremely happy and pleased with Lila from Ekwa and the marketing services they provide. Lila helped make my website better than I ever imagined. She's incorporated everything that was important to me and she listened to me."</p>
+            <h3>Ekwa Client</h3>
+            <small>Working with Lila Stone</small>
+          </article>
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"I just finished a marketing strategy call with Lila and this gave me so much valuable information, answers to questions that I did not know I have. This was an hour worth of knowledge and advice. I love their whole package offer as well as personalized approach to each client. Well researched, presented and communicated! Thank you, Lila!"</p>
+            <h3>Marie-Louise Ratcliffe</h3>
+            <small>Google Review</small>
+          </article>
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"In my first month with Ekwa, I had 34 keywords in the top 3 places of the major search engines. Now, in less than 2 years, my website ranks for 358 keywords in the top 3 places. Results are proven."</p>
+            <h3>Dentist</h3>
+            <small>Flower Mound, TX</small>
+          </article>
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Choosing Ekwa Marketing was a game changer for our practice! 9 out of 10 new patients say they found us through Google. We are receiving 25–30 new patients per month from the Internet!"</p>
+            <h3>Dentist</h3>
+            <small>Longview, TX</small>
+          </article>
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Thank you Ekwa. We had our best year ever, topping $2,000,000 in collections and almost 600 new patients."</p>
+            <h3>Dentist</h3>
+            <small>Greenville, SC</small>
+          </article>
+          <article class="glass review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Ekwa did a great job with my new website. I give the experience a 9.5 out of 10!"</p>
+            <h3>Surgeon &amp; Fertility Specialist</h3>
+            <small>Frisco, TX</small>
+          </article>
+        </div>
+        <p class="sub" style="margin-top:22px; font-size:14px;">Reviews sourced from <a href="https://www.ekwa.com/reviews/" style="color:#1f4e95; font-weight:700;">ekwa.com/reviews</a>.</p>
+      </div>
+    </section>
+
+    <section id="book">
+      <div class="wrap">
+        <div class="glass cta">
+          <div class="kicker">Next Step</div>
+          <h2>Marketing Strategy Meeting Recommended By Mary LeMay</h2>
+          <p>Pick a time that works for you and we will meet you at your Marketing Strategy Meeting.</p>
+          <a href="#schedule" class="btn">Book a Meeting</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <img src="data:image/png;base64,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" alt="Ekwa Marketing logo">
+      </div>
+      <div>
+        Built with ❤️ by Ekwa Marketing.
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Owner-aware partner referral. Folder structure:
+    //   partners.ekwa.com/msm/<owner>/<partner>/   ->  REFCODE = "owner/partner"
+    //   owner = lila | sam  (selects the matching YCBM scheduler)
+    (function () {
+      var SCHEDULERS = {
+        lila: 'https://lila-standalone-partner.youcanbook.me/',
+        sam:  'https://sam-partner-network.youcanbook.me/'
+      };
+      var parts = location.pathname.split('/').filter(Boolean); // ['msm','lila','marylemay']
+      var owner = parts[0] === 'msm' ? (parts[1] || '').toLowerCase() : '';
+      var partner = parts[0] === 'msm' ? (parts[2] || '') : '';
+      var bookingUrl = SCHEDULERS[owner];
+      var f = document.getElementById('ycbm');
+      if (bookingUrl && f) {
+        var refcode = partner ? owner + '/' + partner : owner;
+        f.src = bookingUrl + (bookingUrl.indexOf('?') === -1 ? '?' : '&') + 'REFCODE=' + encodeURIComponent(refcode);
+      }
+    })();
+  </script>
+</body>
+</html>
