@@ -55,7 +55,7 @@
       var bookingUrl = SCHEDULERS[owner];
       if (bookingUrl) {
         var refcode = partner ? owner + '/' + partner : owner;
-        document.getElementById('ycbm').src = bookingUrl + '?REFCODE=' + encodeURIComponent(refcode);
+        document.getElementById('ycbm').src = bookingUrl + '?REFCODE=' + encodeURIComponent(refcode) + '&embed=true';
       } else {
         document.getElementById('schedWrap').style.display = 'none';
         document.getElementById('notice').style.display = 'block';
