@@ -174,7 +174,9 @@
     .recommend h3 { margin: 0 0 6px; font-size: 19px; }
     .recommend p { margin: 0; color: var(--muted); max-width: 740px; }
     .pill-line { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-    .pill { padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(102,240,255,.18); background: rgba(102,240,255,.08); color: #d0fcff; font-weight: 700; font-size: 13px; }
+    .pill { padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(102,240,255,.18); background: rgba(102,240,255,.08); color: #d0fcff; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; transition: background .15s, border-color .15s, transform .15s; }
+    .pill svg { width: 15px; height: 15px; flex: none; }
+    a.pill:hover { background: rgba(102,240,255,.16); border-color: rgba(102,240,255,.32); transform: translateY(-1px); }
     .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .review-card { padding: 22px; display: flex; flex-direction: column; }
     .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
@@ -301,6 +303,10 @@
       background: #eef6ff;
       border-color: rgba(31, 78, 149, 0.16);
     }
+    a.pill:hover {
+      background: #dcecff;
+      border-color: rgba(31, 78, 149, 0.32);
+    }
     .calendar-placeholder {
       background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(246,250,255,.98));
       color: #1b315a;
@@ -377,9 +383,18 @@
             <p class="quote">“I have been looking for a marketing company that I can recommend to folks.”</p>
             <p class="mary-name">Keira Barr<br><span style="font-weight:600; font-size:13px;">Center for Mind-Skin Medicine</span></p>
             <div class="pill-line" style="margin-bottom:14px;">
-              <a class="pill" href="http://drkeirabarr.com/" target="_blank" rel="noopener">Website</a>
-              <a class="pill" href="https://www.instagram.com/drkeirabarr/" target="_blank" rel="noopener">@drkeirabarr</a>
-              <a class="pill" href="https://podcasts.apple.com/us/podcast/the-skinny-dipping-rx/id1635601527" target="_blank" rel="noopener">The Skinny Dipping Rx</a>
+              <a class="pill" href="http://drkeirabarr.com/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Website
+              </a>
+              <a class="pill" href="https://www.instagram.com/drkeirabarr/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                Instagram: @drkeirabarr
+              </a>
+              <a class="pill" href="https://podcasts.apple.com/us/podcast/the-skinny-dipping-rx/id1635601527" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                Podcast: The Skinny Dipping Rx
+              </a>
             </div>
             <div class="metrics">
               <div class="metric"><strong>$300 Off</strong><span>First and second monthly invoices for Keira’s referrals</span></div>
