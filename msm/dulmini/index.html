@@ -345,31 +345,14 @@
     </div>
   </footer>
   <script>
-    // Owner-aware partner referral. Folder structure:
-    //   partners.ekwa.com/msm/<owner>/<partner>/   ->  REFCODE = "owner/partner"
-    //   owner = lila | sam  (selects the matching YCBM scheduler)
-    // Default owner/partner used whenever the URL path doesn't already specify one
-    // (e.g. previewing the file directly, or hosting it at a different path).
+    // Team member page at partners.ekwa.com/msm/dulmini/
+    // Books into Lila's standalone YCBM scheduler with a fixed REFCODE so bookings are attributed to Dulmini.
     (function () {
-      var DEFAULT_OWNER = 'lila';
-      var DEFAULT_PARTNER = 'dulmini';
-      var SCHEDULERS = {
-        lila: 'https://lila-standalone-partner.youcanbook.me/',
-        sam:  'https://sam-partner-network.youcanbook.me/'
-      };
-      var parts = location.pathname.split('/').filter(Boolean); // ['msm','lila','dulmini']
-      var owner = (parts[0] === 'msm' ? (parts[1] || '') : '').toLowerCase();
-      var partner = parts[0] === 'msm' ? (parts[2] || '') : '';
-
-      if (!SCHEDULERS[owner]) {
-        owner = DEFAULT_OWNER;
-        partner = partner || DEFAULT_PARTNER;
-      }
-      var bookingUrl = SCHEDULERS[owner];
+      var BOOKING_URL = 'https://lila-standalone-partner.youcanbook.me/';
+      var REFCODE = 'dulmini';
       var f = document.getElementById('ycbm');
-      if (!bookingUrl || !f) return;
-      var refcode = partner ? owner + '/' + partner : owner;
-      f.src = bookingUrl + (bookingUrl.indexOf('?') === -1 ? '?' : '&') + 'REFCODE=' + encodeURIComponent(refcode) + '&embed=true';
+      if (!f) return;
+      f.src = BOOKING_URL + '?REFCODE=' + encodeURIComponent(REFCODE) + '&embed=true';
 
       // YouCanBookMe posts its content height; size the frame to fit so there is no empty space below the calendar.
       window.addEventListener('message', function (e) {
